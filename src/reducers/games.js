@@ -1,4 +1,3 @@
-import { TOGGLE_LIKE } from '../actions/games/toggle-like'
 import { FETCHED_GAMES } from '../actions/games/fetch'
 import {
   GAME_CREATED,
