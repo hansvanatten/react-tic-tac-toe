@@ -20,7 +20,7 @@ export class GamesContainer extends PureComponent {
   }
 
   renderGame(game, index) {
-    return <GameItem key={ index } { ...game } liked={ false } />
+    return <GameItem key={ index } { ...game } />
   }
 
   render() {

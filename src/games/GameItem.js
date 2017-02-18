@@ -21,31 +21,17 @@ export class GameItem extends PureComponent {
           <h1>
             <Link to={`/games/${_id}`}>{ title }</Link>
           </h1>
-          <ul className="categories">
-            { vegan && <li title="vegan">🌾</li> }
-            { !vegan && vegetarian && <li title="vegetarian">🥕</li> }
-            { !vegetarian && pescatarian && <li title="pescatarian">🐟</li> }
-          </ul>
         </header>
         <main>
           <p>{ summary }</p>
         </main>
         <footer>
-          <LikeButton
-            liked={ liked }
-            likes={likedBy.length}
-            onChange={ this.toggleLike.bind(this) } />
         </footer>
       </article>
     )
   }
 }
 
-const mapStateToProps = ({ currentUser }, { likedBy }) => {
-  return {
-    currentUser,
-    liked: likedBy.filter((like) => (like === (currentUser && currentUser._id))).length > 0
-  }
-}
+const mapStateToProps = ({ currentUser }) => ({ currentUser })
 
 export default connect(mapStateToProps)(GameItem)
