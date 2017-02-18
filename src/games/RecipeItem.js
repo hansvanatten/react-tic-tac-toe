@@ -1,40 +1,25 @@
-// src/recipes/RecipeItem.js
+// src/games/GameItem.js
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import LikeButton from '../components/LikeButton'
-import toggleLikeAction from '../actions/recipes/toggle-like'
-import './RecipeItem.sass'
+import './GameItem.sass'
 
-export class RecipeItem extends PureComponent {
+export class GameItem extends PureComponent {
   static propTypes = {
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    photo: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    vegan: PropTypes.bool,
-    vegetarian: PropTypes.bool,
-    pescatarian: PropTypes.bool,
-    toggleLikeAction: PropTypes.func.isRequired,
   }
 
-  toggleLike() {
-    const { _id, likedBy, currentUser } = this.props
-    if (!currentUser) return
-
-    console.log('CLICK (RecipeItem)', _id)
-    this.props.toggleLikeAction({ _id, likedBy }, currentUser)
-  }
 
   render() {
-    const { _id, title, summary, vegan, vegetarian, pescatarian, photo, liked, likedBy } = this.props
+    const { _id, title } = this.props
 
     return(
-      <article className="recipe">
+      <article className="game">
         <header>
           <div className="cover" style={{ backgroundImage: `url(${photo})` }} />
           <h1>
-            <Link to={`/recipes/${_id}`}>{ title }</Link>
+            <Link to={`/games/${_id}`}>{ title }</Link>
           </h1>
           <ul className="categories">
             { vegan && <li title="vegan">🌾</li> }
@@ -63,4 +48,4 @@ const mapStateToProps = ({ currentUser }, { likedBy }) => {
   }
 }
 
-export default connect(mapStateToProps, { toggleLikeAction })(RecipeItem)
+export default connect(mapStateToProps)(GameItem)
