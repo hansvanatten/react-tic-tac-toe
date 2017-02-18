@@ -7,16 +7,16 @@ export class Loading extends PureComponent {
     loading: PropTypes.bool.isRequired,
   }
 
-  render() {
-    const { loading } = this.props
-    if (!loading) return null
-
-    return (
-      <div className="loading">
-        <img src={ } />
-      </div>
-    )
-  }
+  // render() {
+  //   const { loading } = this.props
+  //   if (!loading) return null
+  //
+  //   return (
+  //     <div className="loading">
+  //       // <img src={ } />
+  //     </div>
+  //   )
+  // }
 }
 
 const mapStateToProps = ({ loading }) => ({ loading })
